@@ -33,9 +33,7 @@ public class Radio {
     }
 
     public int previousStation() {
-        if (currentStation <= 9) {
-            currentStation = currentStation - 1;
-        }
+        currentStation = currentStation - 1;
         if (currentStation <= 0) {
             currentStation = 9;
         }
@@ -71,9 +69,7 @@ public class Radio {
     }
 
     public int volumeDown() {
-        if (currentVolume <= 10) {
-            currentVolume = currentVolume - 1;
-        }
+        currentVolume = currentVolume - 1;
         if (currentVolume <= 0) {
             currentVolume = 0;
         }
