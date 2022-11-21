@@ -5,6 +5,30 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
     @Test
+    public void shouldConstructRadio() {
+        Radio radio = new Radio();
+        int expected = 10;
+        int actual = radio.getStationsAmount();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldConstructRadioWithArgument() {
+        Radio radio = new Radio(100);
+        int expected = 100;
+        int actual = radio.getStationsAmount();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldConstructRadioWithArgumentOutOfRange() {
+        Radio radio = new Radio(-100);
+        int expected = 0;
+        int actual = radio.getStationsAmount();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetStation() {
         Radio radio = new Radio();
         radio.setCurrentStation(9);
@@ -12,6 +36,7 @@ public class RadioTest {
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSetStationAboveMax() {
         Radio radio = new Radio();
@@ -40,15 +65,6 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldNotSwitchStationAboveMax() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(9);
-        int expected = 9;
-        int actual = radio.getCurrentStation();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
     public void shouldSwitchToNextStation() {
         Radio radio = new Radio();
         radio.setCurrentStation(1);
@@ -69,7 +85,7 @@ public class RadioTest {
     @Test
     public void shouldSwitchToPreviousStationBelowMin() {
         Radio radio = new Radio();
-        radio.setCurrentStation(-1);
+        radio.setCurrentStation(0);
         int expected = 9;
         int actual = radio.previousStation();
         Assertions.assertEquals(expected, actual);
@@ -80,15 +96,6 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentStation(9);
         int expected = 8;
-        int actual = radio.previousStation();
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSwitchToPreviousStationAboveMax() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(1);
-        int expected = 9;
         int actual = radio.previousStation();
         Assertions.assertEquals(expected, actual);
     }
